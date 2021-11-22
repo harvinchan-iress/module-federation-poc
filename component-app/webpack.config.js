@@ -1,6 +1,8 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
+
 module.exports = {
   entry: "./index.js",
   mode: "development",
@@ -58,5 +60,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
+    new VanillaExtractPlugin()
   ],
 };

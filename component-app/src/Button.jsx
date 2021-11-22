@@ -1,4 +1,5 @@
 import React from 'lib-app/react';
+import { buttonStyling } from './Button.css';
 const styleMapping = {
     'primary':{
         marginLeft:"10px",
@@ -7,7 +8,6 @@ const styleMapping = {
         borderColor: "#409eff",
         padding: "12px 20px",
         fontSize: '14px',
-        borderRadius: '4px',
         outline:"none",
         border:"1px solid #dcdfe6",
         cursor:"pointer"
@@ -19,7 +19,6 @@ const styleMapping = {
         borderColor: "#e6a23c",
         padding: "12px 20px",
         fontSize: '14px',
-        borderRadius: '4px',
         outline:"none",
         border:"1px solid #dcdfe6",
         cursor:"pointer"
@@ -32,6 +31,6 @@ export default class Button extends React.Component{
     }
     render(){
         var type = this.props.type || 'primary';
-        return <button style={styleMapping[type]}>{ type } Button</button>
+        return <button className={buttonStyling} style={styleMapping[type]}>{ type } Button</button>
     }
 }
