@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack --watch",
-    "serve": "serve dist -p 3001",
-    "start": "concurrently \"npm run webpack\" \"npm run serve\""
+    "start": "webpack serve --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -22,12 +20,15 @@
     "style-loader": "3.3.0",
     "url-loader": "4.1.1",
     "webpack": "5.61.0",
-    "webpack-cli": "4.8.0"
+    "webpack-cli": "4.9.0",
+    "webpack-dev-server": "^4.5.0"
   },
   "dependencies": {
     "@vanilla-extract/css": "^1.6.3",
     "@vanilla-extract/webpack-plugin": "^2.1.1",
+    "external-remotes-plugin": "^1.0.0",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "webpack-livereload-plugin": "^3.0.2"
   }
 }

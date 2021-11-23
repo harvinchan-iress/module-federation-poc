@@ -28,7 +28,7 @@ export default class App extends React.Component{
         <h1>Open Dev Tool And Focus On Network,checkout resources details</h1>
         <p>react、react-dom js files hosted on <strong>lib-app</strong></p>
         <p>
-          components hosted on <strong>component-app 1232</strong>
+          components hosted on <strong>component-app</strong>
         </p>
         <h4>
           Buttons:

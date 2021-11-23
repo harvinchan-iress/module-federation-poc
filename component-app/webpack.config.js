@@ -2,14 +2,24 @@ const { ModuleFederationPlugin } = require("webpack").container;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
+const LiveReloadPlugin = require("webpack-livereload-plugin");
 
 module.exports = {
   entry: "./index.js",
   mode: "development",
   devtool: "hidden-source-map",
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: "auto",
     clean: true,
+  },
+  devServer: {
+    hot: false,
+    static: path.join(__dirname, "dist"),
+    port: 3001,
+    historyApiFallback: {
+      index: "index.html",
+    },
   },
   resolve: {
     extensions: [
@@ -57,9 +67,13 @@ module.exports = {
         "lib-app": "lib_app@http://localhost:3000/remoteEntry.js",
       },
     }),
+    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new VanillaExtractPlugin()
+    new VanillaExtractPlugin(),
+    new LiveReloadPlugin({
+      port: 35729,
+    }),
   ],
 };

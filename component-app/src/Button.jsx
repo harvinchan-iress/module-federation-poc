@@ -31,6 +31,6 @@ export default class Button extends React.Component{
     }
     render(){
         var type = this.props.type || 'primary';
-        return <button className={buttonStyling} style={styleMapping[type]}>{ type } Button</button>
+        return <button className={buttonStyling} style={styleMapping[type]}>{ type } Button 999</button>
     }
 }

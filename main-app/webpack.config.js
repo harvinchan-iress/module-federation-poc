@@ -1,21 +1,21 @@
 const { ModuleFederationPlugin } = require("webpack").container;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
   entry: "./index.js",
   mode: "development",
   devtool: "hidden-source-map",
   devServer: {
-    client: {
-      overlay: false,
-    },
-    historyApiFallback: true,
-    port: 8080,
-    hot: true
+    hot: true,
+    static: path.join(__dirname, "dist"),
+    port: 3002,
+    liveReload: false,
   },
   output: {
-    publicPath: "http://localhost:3002/",
+    publicPath: "auto",
     clean: true,
   },
   resolve: {
@@ -54,8 +54,12 @@ module.exports = {
         "component-app": "component_app@http://localhost:3001/remoteEntry.js",
       },
     }),
+    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new ReactRefreshWebpackPlugin({
+      exclude: [/node_modules/, /bootstrap\.js$/],
     }),
   ],
 };
